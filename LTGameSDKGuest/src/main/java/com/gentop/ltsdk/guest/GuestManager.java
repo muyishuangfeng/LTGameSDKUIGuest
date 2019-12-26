@@ -31,7 +31,7 @@ public class GuestManager {
      * 绑定账户
      */
     public static void bindAccount(Context context, boolean isServerTest, String LTAppID, String LTAppKey,
-                                   String adID, String packageID,String tag,String token,
+                                   String adID, String packageID, String tag, String token,
                                    OnLoginSuccessListener mListener) {
         Map<String, Object> map = new WeakHashMap<>();
         if (!TextUtils.isEmpty(adID)) {
@@ -43,6 +43,18 @@ public class GuestManager {
             map.put("type", tag);
         }
         LoginResultManager.bingAccount(context, isServerTest, LTAppID, LTAppKey, map, mListener);
+    }
+
+    /**
+     * 解绑
+     */
+    public static void unBindAccount(Context context, boolean isServerTest, String LTAppID, String LTAppKey,
+                                     String adID, OnLoginSuccessListener mListener) {
+        Map<String, String> map = new WeakHashMap<>();
+        if (!TextUtils.isEmpty(adID)) {
+            map.put("adid", adID);
+        }
+        LoginResultManager.unBingAccount(context, isServerTest, LTAppID, LTAppKey, map, mListener);
     }
 
 }
