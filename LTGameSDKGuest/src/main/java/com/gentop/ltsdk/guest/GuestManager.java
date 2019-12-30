@@ -19,12 +19,10 @@ public class GuestManager {
                                   String adID, String packageID, OnLoginSuccessListener mListener) {
         Map<String, Object> map = new WeakHashMap<>();
         if (!TextUtils.isEmpty(adID)) {
-            map.put("platform", 2);
-            map.put("adid", adID);
             map.put("gps_adid", adID);
             map.put("platform_id", packageID);
         }
-        LoginResultManager.guestLogin(context, isServerTest, LTAppID, LTAppKey, map, mListener);
+        LoginResultManager.guestLogin(context, isServerTest, LTAppID, LTAppKey, adID,map, mListener);
     }
 
     /**
@@ -36,13 +34,11 @@ public class GuestManager {
         Map<String, Object> map = new WeakHashMap<>();
         if (!TextUtils.isEmpty(adID)) {
             map.put("access_token", token);
-            map.put("platform", 2);
-            map.put("adid", adID);
             map.put("gps_adid", adID);
             map.put("platform_id", packageID);
             map.put("type", tag);
         }
-        LoginResultManager.bingAccount(context, isServerTest, LTAppID, LTAppKey, map, mListener);
+        LoginResultManager.bingAccount(context, isServerTest, LTAppID, LTAppKey, adID,map, mListener);
     }
 
     /**
@@ -54,7 +50,7 @@ public class GuestManager {
         if (!TextUtils.isEmpty(adID)) {
             map.put("adid", adID);
         }
-        LoginResultManager.unBingAccount(context, isServerTest, LTAppID, LTAppKey, map, mListener);
+        LoginResultManager.unBingAccount(context, isServerTest, LTAppID, LTAppKey,adID, map, mListener);
     }
 
 }
